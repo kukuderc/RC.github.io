@@ -18,6 +18,207 @@ layout: default
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);">
   <ul id="results-container"></ul>
 </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages 展开类目效果</title>
+
+    <!-- 引入 highlight.js 样式 (用于代码高亮展示) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+
+    <!-- 内部样式 -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .menu {
+            width: 300px;
+        }
+
+        .menu-toggle {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 5px 0;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .submenu a:hover {
+            background-color: #ddd;
+        }
+
+        /* 代码展示区域 */
+        .code-container {
+            margin-bottom: 20px;
+        }
+
+        .code-container button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .code-container pre {
+            display: none;
+            padding: 15px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GitHub Pages 展开类目示例</h1>
+
+    <!-- 展开/折叠菜单 -->
+    <div class="menu">
+        <button class="menu-toggle">类目 1</button>
+        <div class="submenu">
+            <a href="#">子类目 1</a>
+            <a href="#">子类目 2</a>
+            <a href="#">子类目 3</a>
+        </div>
+
+        <button class="menu-toggle">类目 2</button>
+        <div class="submenu">
+            <a href="#">子类目 1</a>
+            <a href="#">子类目 2</a>
+        </div>
+
+        <button class="menu-toggle">类目 3</button>
+        <div class="submenu">
+            <a href="#">子类目 1</a>
+        </div>
+    </div>
+
+    <h2>代码展示</h2>
+
+    <!-- 示例代码展示区域 -->
+    <div class="code-container">
+        <button onclick="toggleCode(this)">查看 HTML 代码</button>
+        <pre><code class="html">
+<!-- 示例 HTML 代码 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开类目效果</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu">
+        <button class="menu-toggle">类目 1</button>
+        <div class="submenu">
+            <a href="#">子类目 1</a>
+            <a href="#">子类目 2</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+        </code></pre>
+    </div>
+
+    <div class="code-container">
+        <button onclick="toggleCode(this)">查看 CSS 代码</button>
+        <pre><code class="css">
+/* 示例 CSS 代码 */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    width: 300px;
+}
+
+.menu-toggle {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu a {
+    display: block;
+    padding: 5px 0;
+}
+        </code></pre>
+    </div>
+
+    <div class="code-container">
+        <button onclick="toggleCode(this)">查看 JavaScript 代码</button>
+        <pre><code class="javascript">
+// 示例 JavaScript 代码
+document.querySelectorAll('.menu-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function() {
+        const submenu = this.nextElementSibling;
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
+        </code></pre>
+    </div>
+
+    <!-- 引入 highlight.js 和代码折叠的脚本 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        // 初始化 highlight.js
+        hljs.highlightAll();
+
+        // 实现代码折叠功能
+        function toggleCode(button) {
+            var codeBlock = button.nextElementSibling;
+            if (codeBlock.style.display === "none") {
+                codeBlock.style.display = "block";
+            } else {
+                codeBlock.style.display = "none";
+            }
+        }
+
+        // 实现菜单的展开/折叠功能
+        const menuToggles = document.querySelectorAll('.menu-toggle');
+        menuToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const submenu = this.nextElementSibling;
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
 
 <!--script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script-->
 <script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
